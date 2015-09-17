@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">	
+<head>
+	<meta charset="utf-8">
+	<title>Reveal.js 3 Slide Demo</title>
+	 <link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+        <link rel="stylesheet" href="css/styles/default.css">	
+</head>
+ 
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>History API</h1>
+				<p>created by Eugen Lenz</p>		
+			</section>
+ 
+ 
+			<section>
+				<h2>Agenda</h2>
+				<ul>
+                        <li>Einstieg</li>
+						<li>Was ist die History API?</li>
+						<li>Beispiel</li>
+                        <li>Nachteile+Vorteile</li>
+					</ul>
+			</section>
+            
+            <section> 
+            <h2> Einstieg</h2>
+            <ul>
+                <li> history.back(), history.forward() und history.go(-2)</li>
+                <li> Nun wird History Log gespeichert und kann darauf reagieren, wenn zurück-Knopf angeklickt wird </li>
+                
+                </ul>
+                
+            </section>
+ 
+            
+            <section>
+            <h2>Was ist die History API?</h2>
+               <ul>
+                    <li> Browserhistorie praktisch manipulieren</li>
+                    <li>  History des Browsers besteht aus einem Stack, dem mithilfe der HTML5 History API ein Eintrag hinzugefügt     werden kann</li>
+                   <li> in History wird die zuletzt aufgerufene Adresse übernommen</li>
+                </ul> 
+            </section>
+			      
+            <section>
+                <section> 
+                    <a href="https://css-tricks.com/examples/State/"> Beispiel mit Ghostbusters</a>
+                    <h2> HTML</h2>
+                <!-- ordentliche Struktur ist mir bekannt, zeitlich aber leider nicht geschafft in Ordnung zu bringen -->
+            <pre rel="HTML" class=" language-markup">
+            <code class=" language-markup">
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>gallery<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/peter.html<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>bill.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Peter<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>peter<span class="token punctuation">"</span></span> <span class="token attr-name">data-name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>peter<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/ray.html<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ray.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Ray<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ray<span class="token punctuation">"</span></span> <span class="token attr-name">data-name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ray<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/egon.html<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>egon.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Egon<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>egon<span class="token punctuation">"</span></span> <span class="token attr-name">data-name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>egon<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/winston.html<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>winston.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Winston<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>winston<span class="token punctuation">"</span></span> <span class="token attr-name">data-name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>winston<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>selected<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Ghostbusters<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>highlight<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+                </section>                  
+                
+                
+              <section> 
+                  <h2> history.pushState()</h2>
+                  <pre rel="JavaScript" class=" language-javascript"><code class=" language-javascript">history<span class="token punctuation">.</span><span class="token function">pushState<span class="token punctuation">(</span></span><span class="token keyword">data</span><span class="token punctuation">,</span> <span class="token keyword">title</span><span class="token punctuation">,</span> <span class="token string">url</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+                  <ul>
+                  <li> „data“ kann standardmäßig „null“ gesetzt werden, kann aber für Informationen in der Session-History genutzt werden</li>
+                      <li> „title“ ist einfach ein Titel, der in der History angezeigt wird</li>
+                      <li>„url“ ist die URL die aufgerufen werden soll</li>  
+                  </ul>
+              </section>
+            
+                
+                <section>
+            <h2> history.replaceState()</h2>
+            
+            <pre rel="JavaScript" class=" language-javascript"><code class=" language-javascript">history<span class="token punctuation">.</span><span class="token function">replaceState<span class="token punctuation">(</span></span>data<span class="token punctuation">,</span> <span class="token keyword">title</span><span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+             <ul> 
+                <li> Attribute gelten dieselben Eigenschaften wie bei pushState
+                    <li> replaceState ersetzt letzten Eintrag in der History & schreibt keine neue URL in die Adresszeile des Browsers</li> 
+                    <li> Nutzungsbeispiel: wenn man innerhalb einer Seite navigiert, kann man die zuletzt aufgerufene Seite in die History eintragen</li>
+                </ul>
+                </section>
+                
+                
+               <section> 
+                 <img src="https://cms-assets.tutsplus.com/uploads/users/436/posts/22160/image/push-vs-replace-state.jpg" alt="Vergleich">
+                 </section>
+        </section>
+            
+            
+         <section>
+            <section> 
+                <h2> Vorteile </h2>
+                    <ul>
+                        <li> z.B. Suchmaschinenoptimierung</li>
+                        <li> müssen Unterstützungen für die neuen URLs geschaffen werden, die von den Suchmaschinen durchsucht werden</li>
+                        <li> verbessert die Usability und schafft eine Form von Permalinks </li>
+                    </ul>
+                </section>
+                <section> 
+                <h2> Nachteile</h2>
+                    <ul>
+                    <li> viele negative Dinge können damit angestellen werden </li>
+                    <li> zum Beispiel in History unliebsame URLs eintragen</li>
+                    </ul>
+                </section>   
+            </section>
+           
+            
+            <section> 
+                <h1> The End</h1>
+            </section>
+        </div>
+        
+	</div>
+    
+	 <script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+           
+ 
+	<script>
+		
+	Reveal.initialize({
+		});
+	</script>
+</body>
+</html>
